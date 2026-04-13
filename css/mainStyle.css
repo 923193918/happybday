@@ -66,3 +66,51 @@ body {
 body {
   cursor: url('../img/paw.png'), auto;
 }
+
+/* CAMERA BODY */
+.camera-box {
+    width: 380px;
+    padding: 20px;
+    background: #f7f7f7;
+    border: 4px solid #333;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    position: relative;
+    margin: 40px auto;
+}
+
+/* TOP CAMERA BAR */
+.camera-box::before {
+    content: "";
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 25px;
+    background: #333;
+    border-radius: 12px 12px 0 0;
+}
+
+/* SHUTTER BUTTON */
+.camera-box::after {
+    content: "";
+    position: absolute;
+    top: -18px;
+    right: 40px;
+    width: 35px;
+    height: 12px;
+    background: #ff5ca8;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(255, 92, 168, 0.6);
+}
+
+/* CAMERA SCREEN (your video) */
+.camera-screen {
+    width: 100%;
+    border-radius: 15px;
+    border: 4px solid #222;
+    background: black;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+
