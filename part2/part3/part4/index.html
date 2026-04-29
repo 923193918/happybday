@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/mainStyle.css">
+</head>
+<body>
+
+    <img id="character" src="img/cat1.png" alt="character">
+
+    <div id="speech-box">
+        <p>
+            Yeah, dont see my treasure here, Let's keep
+            <a class="click-word" href="../part4/part5/index.html">looking!</a>
+        </p>
+
+    </div>
+
+<script>
+    const speech = document.getElementById("speech-box");
+
+    setTimeout(() => {
+    speech.style.display = "block";
+    speech.style.opacity = "1";
+}, 3000); // delay in milliseconds (3 seconds)
+</script>
+
+<script>
+    const clickWords = document.querySelectorAll(".click-word");
+    const moreText = document.getElementById("more-text");
+
+    clickWords.forEach(word => {
+        word.addEventListener("click", () => {
+            const extra = word.getAttribute("data-more");
+            moreText.textContent = extra;
+        });
+    });
+
+</script>
+
+<script>
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function (e) {
+        e.preventDefault(); // stop instant navigation
+
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+            window.location.href = this.href;
+        }, 400); // match the CSS transition time
+    });
+});
+</script>
+
+
+</body>
+</html>
+
