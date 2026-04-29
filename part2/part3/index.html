@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/mainStyle.css">
+</head>
+<body>
+
+    <img id="character" src="img/cat1.png" alt="character">
+
+    <div id="speech-box">
+        <p>
+            Since you are so kind to help me find my treasure, I will let you keep it if you succeed in finding it!
+        </p>
+
+        <p>
+            The first clue is that it is white and fluffy, and it is hiding somewhere in this realm. If you see anything that fits the description, click on it to find out if it is the 
+            <a class="click-word" href="../part3/part4/index.html">treasure!</a>
+        </p>
+
+        <p>
+            Let's start looking!
+        </p>
+
+    </div>
+
+<script>
+    const speech = document.getElementById("speech-box");
+
+    // Show the speech box immediately
+    speech.style.display = "block";
+    speech.style.opacity = "1";
+</script>
+
+<script>
+    const clickWords = document.querySelectorAll(".click-word");
+    const moreText = document.getElementById("more-text");
+
+    clickWords.forEach(word => {
+        word.addEventListener("click", () => {
+            const extra = word.getAttribute("data-more");
+            moreText.textContent = extra;
+        });
+    });
+
+</script>
+
+<script>
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function (e) {
+        e.preventDefault(); // stop instant navigation
+
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+            window.location.href = this.href;
+        }, 400); // match the CSS transition time
+    });
+});
+</script>
+
+
+</body>
+</html>
+
