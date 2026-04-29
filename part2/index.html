@@ -3,23 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/mainStyle.css">
-    <title>Happy Birthday my love</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-    <div class="text-box">
-        <h1 class="outlined-pink-text">Happy Birthday my love</h1>
+    <img id="character" src="img/cat1.png" alt="character">
+
+    <div id="speech-box">
+        <p id="line-1">
+            Omg! I have spotted a wild bryan
+        </p>
+
+        <p id="line-2">
+            Today must be my lucky day! I need some help finding a treasure, can you help me out
+            <a class="click-word" href="../part2/part3/index.html">bryan?</a>!
+        </p>
+
+        <!-- This is where the revealed text appears -->
+        <p id="more-text"></p>
     </div>
 
+<script>
+const character = document.getElementById("character");
+const speech = document.getElementById("speech-box");
 
-    <div class="glow-box">
-      <h2 class="text">Dear Bryan, I love you so much, you are the best bf anyone could ask for....</h1>
-    </div>
+const line1 = document.getElementById("line1");
+const line2 = document.getElementById("line2");
+
+character.addEventListener("animationend", () => {
+    // fade in the speech box
+    speech.style.opacity = "1";
+
+    // type line 1
+    setTimeout(() => {
+        typeWriter(line1, 40, () => {
+            // after line 1 finishes, type line 2
+            typeWriter(line2, 40);
+        });
+    }, 300);
+});
+</script>
+
+<script>
+    const clickWords = document.querySelectorAll(".click-word");
+    const moreText = document.getElementById("more-text");
+
+    clickWords.forEach(word => {
+        word.addEventListener("click", () => {
+            const extra = word.getAttribute("data-more");
+            moreText.textContent = extra;
+        });
+    });
+</script>
+
+<script>
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function (e) {
+        e.preventDefault(); // stop instant navigation
+
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+            window.location.href = this.href;
+        }, 400); // match the CSS transition time
+    });
+});
+</script>
+
+<script>
+function typeWriter(element, speed = 40, callback = null) {
+    const text = element.innerHTML;
+    element.innerHTML = "";
+    let i = 0;
+
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        } else if (callback) {
+            callback();
+        }
+    }
+
+    type();
+}
+</script>
 
 </body>
 </html>
