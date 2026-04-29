@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/mainStyle.css">
+</head>
+<body>
+
+    <img id="character" src="img/cat1.png" alt="character">
+    <img id="dog" src="img/dog.png" alt="dog character">
+
+    <div id="speech-box">
+        <p>
+            Could it be... We found the treasure!
+        </p>
+
+        <p>
+            Well, thanks for all your help, I couldn't have done it without you. Click on the dog to recieve your well deserved prize!
+        </p>
+
+        <p id="more-text"></p>
+    </div>
+
+<script>
+const character = document.getElementById("character");
+const speech = document.getElementById("speech-box");
+
+character.addEventListener("animationend", () => {
+
+    // Get cat's position
+    const catRect = character.getBoundingClientRect();
+
+    // Position speech box above the cat
+    speech.style.left = (catRect.left + catRect.width / 2 - 140) + "px";
+    speech.style.bottom = "260px"; // adjust height above cat if needed
+
+    // Fade in
+    speech.style.opacity = "1";
+});
+</script>
+
+<script>
+const clickWords = document.querySelectorAll(".click-word");
+const moreText = document.getElementById("more-text");
+
+clickWords.forEach(word => {
+    word.addEventListener("click", () => {
+        const extra = word.getAttribute("data-more");
+        moreText.textContent = extra;
+    });
+});
+</script>
+
+<script>
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+            window.location.href = this.href;
+        }, 400);
+    });
+});
+</script>
+
+<script>
+const dog = document.getElementById("dog");
+
+dog.addEventListener("click", () => {
+    document.body.classList.add("fade-out");
+
+    setTimeout(() => {
+        window.location.href = "part8/index.html";
+    }, 400); // matches your fade-out animation
+});
+</script>
+
+</body>
+</html>
+
