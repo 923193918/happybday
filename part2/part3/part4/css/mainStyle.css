@@ -1,0 +1,56 @@
+/* GENERAL PAGE SETUP */
+body {
+    margin: 0;
+    font-family: "Press Start 2P", system-ui;
+    background-image: url('../img/tree.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+}
+
+#character {
+    position: absolute;
+    bottom: 50px;
+    left: 40px;   /* distance from the left edge */
+    width: 200px;
+}
+
+/* SPEECH BOX */
+#speech-box {
+    position: absolute;
+    bottom: 280px; /* height above the cat */
+    left: 40px;    /* same left position as the cat */
+    background: white;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 3px solid black;
+    font-family: "Press Start 2P";
+    width: 260px;     /* smaller width */
+    min-height: 60px; /* smaller height */
+    text-align: left;
+
+    opacity: 0;       /* start invisible */
+    transition: opacity 0.4s ease;
+}
+
+
+/* CLICKABLE WORDS */
+.click-word {
+    color: #ff66cc;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* EXTRA TEXT */
+#more-text {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
