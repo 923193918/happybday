@@ -1,0 +1,71 @@
+/* GENERAL PAGE SETUP */
+body {
+    margin: 0;
+    font-family: "Press Start 2P", system-ui;
+    background-image: url('../img/dog.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+}
+
+#character {
+    position: absolute;
+    bottom: 50px;
+    left: -200px; /* start off-screen left */
+    width: 200px;
+    animation: walkAcross 5s linear forwards;
+}
+
+@keyframes walkAcross {
+    0% { left: -200px; }
+    100% { left: calc(100% - 800px - 250px); }
+}
+
+#speech-box {
+    position: absolute;
+    bottom: 260px;
+    background: white;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 3px solid black;
+    font-family: "Press Start 2P";
+    width: 280px;
+    min-height: 80px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    text-align: left;
+}
+
+
+/* CLICKABLE WORDS */
+.click-word {
+    color: #ff66cc;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* EXTRA TEXT */
+#more-text {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+#dog {
+    position: absolute;
+    bottom: 50px;
+    right: 800px; /* adjust to place it where you want */
+    width: 180px;
+    cursor: pointer; /* shows it's clickable */
+    transition: transform 0.2s ease;
+}
+
+#dog:hover {
+    transform: scale(1.1); /* cute hover effect */
+}
