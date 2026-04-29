@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/mainStyle.css">
+</head>
+<body>
+
+    <img id="character" src="img/cat1.png" alt="character">
+
+    <div id="speech-box">
+        <p>
+            Nope! not here either... but dont be discouraged, keep on 
+            <a class="click-word" href="part6/index.html">looking!</a>
+        </p>
+
+        <p id="more-text"></p>
+    </div>
+
+<script>
+const character = document.getElementById("character");
+const speech = document.getElementById("speech-box");
+
+character.addEventListener("animationend", () => {
+    speech.style.opacity = "1";   // fade in AFTER cat stops
+});
+</script>
+
+<script>
+const clickWords = document.querySelectorAll(".click-word");
+const moreText = document.getElementById("more-text");
+
+clickWords.forEach(word => {
+    word.addEventListener("click", () => {
+        const extra = word.getAttribute("data-more");
+        moreText.textContent = extra;
+    });
+});
+</script>
+
+<script>
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+            window.location.href = this.href;
+        }, 400);
+    });
+});
+</script>
+
+</body>
+</html>
+
