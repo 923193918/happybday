@@ -1,0 +1,40 @@
+/* GENERAL PAGE SETUP */
+body {
+    margin: 0;
+    font-family: "Press Start 2P", system-ui;
+    background-image: url('../img/dog.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* CLICKABLE WORDS */
+.click-word {
+    color: #ff66cc;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* EXTRA TEXT */
+#more-text {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+#video-box {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 20px;
+    border: 3px solid black;
+    border-radius: 12px;
+}
