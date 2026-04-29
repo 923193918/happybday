@@ -1,83 +1,60 @@
 body {
     margin: 0;
     font-family: "Press Start 2P", system-ui;
-
-    /* BACKGROUND IMAGE */
-    background-image: url('../img/domo.jpeg');
+    background-image: url('../img/grass.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
-    color: var(--text);
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     min-height: 100vh;
-    overflow-y: auto;
+    position: relative; /* important so absolute elements anchor correctly */
 }
 
-.center-me {
-    text-align: center;
+/* CAT WALKING ANIMATION */
+#character {
+    position: absolute;
+    bottom: 50px;
+    left: -200px;
+    width: 200px;
+    animation: walkAcross 5s linear forwards;
 }
 
-.center-box {
-    width: 350px;
+@keyframes walkAcross {
+    0% { left: -200px; }
+    100% { left: 40%; }
+}
+
+/* SPEECH BOX */
+#speech-box {
+    position: absolute;
+    bottom: 260px; /* adjust this to move the box higher/lower */
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
     padding: 20px;
-    margin: 40px auto; /* centers the box */
-    background: #ffd6ec; /* soft pink */
-    border: 3px solid #ff5ca8;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+    border-radius: 12px;
+    border: 3px solid black;
+    font-family: "Press Start 2P";
+    width: 500px;      /* makes the box wide enough */
+    min-height: 120px; /* ensures text fits inside */
+    opacity: 0;
+    transition: opacity 0.4s ease;  /* hidden until cat finishes walking */
     text-align: center;
 }
 
-
-.text-box {
-    background: rgba(255, 214, 236, 0.35); /* transparent soft pink */
-    padding: 10px 20px;
-    border: 3px solid #ff5ca8;            /* same pink as your box border */
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 92, 168, 0.35);
-    display: inline-block;                /* keeps the box tight around text */
-    margin-bottom: 30px;
+/* CLICKABLE WORDS */
+.click-word {
+    color: #ff66cc;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
-.outlined-pink-text {
-    font-size: 3rem;
-    color: #ffd6ec;                       /* light pink fill */
-    -webkit-text-stroke: 1.5px #ff5ca8;     /* outline matches box border */
-    font-weight: 700;
-    text-shadow: 0 0 10px rgba(255, 92, 168, 0.4);
+/* EXTRA TEXT APPEARS BELOW */
+#more-text {
+    margin-top: 15px;
+    font-size: 14px;
 }
 
-.glow-box {
-    margin: 40px auto;
-    padding: 20px 30px;
-    width: fit-content;
-    border: 3px solid #ff5ca8;
-    border-radius: 20px;
-    text-align: center;
-    animation: borderGlow 2s ease-in-out infinite;
-}
-
-.glow-box p {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.5rem;
-    color: #ff5ca8;
-}
-
-/* Glowing border animation */
-@keyframes borderGlow {
-    0% {
-        box-shadow: 0 0 10px #ff8acb, 0 0 20px #ff5ca8;
-    }
-    50% {
-        box-shadow: 0 0 20px #ff5ca8, 0 0 40px #ff2f92;
-    }
-    100% {
-        box-shadow: 0 0 10px #ff8acb, 0 0 20px #ff5ca8;
-    }
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
